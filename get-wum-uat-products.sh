@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -o xtrace; set -e;
 
 #Defined the output file path locations in testgrid home
 HEADER_ACCEPT="Accept: application/json"
@@ -162,9 +163,9 @@ getProductIdList(){
 
 }
 
-args=$1
+wum_arg=$1
 
-if [[ -z $args ]]; then
+if [[ -z $wum_arg ]]; then
 	createAccessTokenLive
 	createAccessTokenUAT
 	getTimestampLive
@@ -172,7 +173,7 @@ if [[ -z $args ]]; then
 	getChannelList
 	getProductIdList
 else
-	case $args in
+	case $wum_arg in
 		--get-live-timestamp)
 			createAccessTokenLive
 			getTimestampLive
